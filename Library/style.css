@@ -1,0 +1,834 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f9f9f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #232f3e;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+width: 80px; 
+height: 70px; 
+object-fit: contain; 
+border-radius: 50%;
+}
+.search-container {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  max-width: 800px;
+  border-radius: 50px;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.search-box:hover {
+  transform: translateY(-3px);
+}
+
+.search-box select {
+  padding: 15px;
+  border: none;
+  font-size: 1em;
+  background-color: #f39c12;
+  color: white;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  outline: none;
+  width: 150px;
+  cursor: pointer;
+}
+#category-select {
+background-color: #f39c12; 
+color: white; 
+
+}
+
+
+#category-select option {
+background-color: white;
+color: black; 
+}
+
+
+#category-select option:hover {
+background-color: #f39c12; 
+color: white; 
+}
+.search-box input[type="text"] {
+  flex: 1;
+  padding: 15px;
+  border: none;
+  font-size: 1em;
+  color: #333;
+  background-color: #f9f9f9;
+  outline: none;
+}
+
+.search-box button {
+  padding: 15px;
+  background-color: #f39c12;
+  color: white;
+  font-size: 1.1em;
+  border: none;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-box button i {
+  font-size: 1.3em;
+}
+
+.search-box button:hover {
+  background-color: #e67e22;
+}
+.suggestions-list {
+position: absolute;
+top: 75px;
+width: 600px;
+background-color: white;
+border: 1px solid #ccc;
+border-radius: 8px;
+max-height: 200px;
+overflow-y: auto;
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+z-index: 100;
+margin-left: 150px;
+display: none;
+}
+.search-box:hover {
+transform: none;
+}
+.suggestion-item {
+display: flex;
+align-items: center;
+padding: 10px;
+cursor: pointer;
+border-bottom: 1px solid #ddd;
+}
+
+.suggestion-item img {
+width: 40px;
+height: 60px;
+object-fit: cover;
+border-radius: 4px;
+margin-right: 10px;
+}
+
+.suggestion-title {
+font-size: 1em;
+font-weight: bold;
+color: #333;
+}
+
+.suggestion-author {
+font-size: 0.9em;
+color: #555;
+}
+
+.header-icons {
+  display: flex;
+  align-items: center;
+  margin-right: 80px;
+  gap: 20px;
+}
+
+.header-icons i {
+  font-size: 1.5em;
+  color: #ffffff;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.header-icons i:hover {
+  color: #f1c40f;
+}
+
+.hero-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 80px 20px;
+  color: white;
+  background: linear-gradient(270deg, #f2f2f2, #e0e0e0, #f9f9f9);
+  background-size: 600% 600%;
+  animation: gradientAnimation 10s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-title {
+  font-size: 3em;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.hero-description {
+  font-size: 1.2em;
+  font-weight: 400;
+  max-width: 800px;
+  line-height: 1.6;
+  color: #f39c12;
+}
+
+.hero-btn {
+  margin-top: 20px;
+  padding: 12px 30px;
+  background-color: #ffffff;
+  color: #283e51;
+  font-size: 1em;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.hero-btn:hover {
+  background-color: #e67e22;
+  color: #ffffff;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin-top: 120px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5em;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+#books-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 30px;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+}
+
+#books-container::-webkit-scrollbar {
+  display: none;
+}
+
+.book {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  min-width: 200px;
+}
+
+.book:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.book img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+  loading: lazy;
+}
+
+.book h3 {
+  font-size: 1.3em;
+  margin-top: 15px;
+  color: #333;
+  font-weight: 600;
+}
+
+
+
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.nav-button {
+  font-size: 2em;
+  color: #f39c12;
+  cursor: pointer;
+  margin: 0 20px;
+  transition: color 0.3s;
+}
+
+.nav-button:hover {
+  color: #e67e22;
+}
+
+.nav-button.disabled {
+  color: #bdc3c7;
+  pointer-events: none;
+}
+.popupWindow {
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background: #fff;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+z-index: 1000;
+padding: 20px;
+border-radius: 10px;
+max-width: 800px; 
+width: 90%;
+display: flex;
+flex-direction: row;
+overflow: hidden;
+font-family: Arial, sans-serif;
+}
+
+.popupWindow-content {
+display: flex;
+flex-direction: column;
+width: 100%;
+}
+
+.popupWindow img {
+width: 180px;
+height: 240px; 
+border-radius: 8px;
+margin-right: 20px;
+
+object-fit: cover;
+}
+
+.popupWindow-text {
+flex: 1;
+text-align: left;
+}
+
+.popupWindow-text h2 {
+margin: 0 0 10px;
+font-size: 1.5em;
+color: #333;
+}
+
+.popupWindow-text p {
+margin: 5px 0;
+color: #555;
+line-height: 1.6;
+}
+
+#loading-spinner {
+    display: none;
+    text-align: center; 
+  }
+ 
+  #loading-spinner i {
+    font-size: 2em; 
+    color: #f39c12;
+  }
+  
+.close-button {
+position: absolute;
+top: 10px;
+right: 10px;
+font-size: 24px;
+cursor: pointer;
+color: #555;
+transition: color 0.3s ease;
+}
+
+.close-button:hover {
+color: #000;
+}
+
+@media (min-width: 1024px) {
+    .container {
+      max-width: 1200px;
+      padding: 20px;
+    }
+  
+    .hero-title {
+      font-size: 3em;
+    }
+  
+    .search-box {
+      width: 80%;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .container {
+      width: 90%;
+      padding: 15px;
+    }
+  
+    .hero-title {
+      font-size: 2em;
+    }
+  
+    .search-box {
+      width: 90%;
+    }
+  
+    .book img {
+      height: 200px;
+    }
+    .suggestions-list {
+        position: absolute;
+        top: 75px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-width: 600px;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        max-height: 200px;
+        overflow-y: auto;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        display: none;
+      }
+      
+      .suggestions-list.active {
+        display: block; 
+      }
+      
+      .suggestion-item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        cursor: pointer;
+        border-bottom: 1px solid #ddd;
+      }
+      
+      .suggestion-item img {
+        width: 40px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-right: 10px;
+      }
+      
+      .suggestion-title {
+        font-size: 1em;
+        font-weight: bold;
+        color: #333;
+      }
+      
+      .suggestion-author {
+        font-size: 0.9em;
+        color: #555;
+      }
+      
+  }
+  @media (max-width: 768px) {
+    body {
+      padding-top: 80px; 
+    }
+  
+    header {
+      padding: 15px 20px;
+    }
+  
+    .logo img {
+      width: 60px;
+      height: 60px;
+    }
+  
+    .search-container {
+      width: 100%;
+      padding: 0 10px;
+    }
+  
+    .search-box {
+      width: 100%;
+      margin: 10px 0;
+    }
+  
+    .search-box select {
+      width: 40%;
+      padding: 10px;
+      font-size: 0.9em;
+    }
+  
+    .search-box input[type="text"] {
+      flex: 1;
+      padding: 12px;
+      font-size: 1em;
+    }
+  
+    .search-box button {
+      padding: 12px;
+      font-size: 1em;
+    }
+  
+    .header-icons {
+      margin-right: 20px;
+      gap: 10px;
+    }
+  
+    .hero-section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+  
+    .hero-title {
+      font-size: 2.5em;
+    }
+  
+    .hero-description {
+      font-size: 1em;
+      max-width: 100%;
+    }
+  
+    .hero-btn {
+      font-size: 0.9em;
+      padding: 10px 20px;
+    }
+  
+    .container {
+      width: 100%;
+      margin-top: 100px;
+    }
+  
+    #books-container {
+      display: block;
+      padding-bottom: 20px;
+    }
+  
+    .book {
+      min-width: 150px;
+      margin: 10px auto;
+      padding: 10px;
+      width: 100%;
+    }
+  
+    .book img {
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+  
+    .book h3 {
+      font-size: 1em;
+    }
+  
+    .navigation-buttons {
+      margin-top: 20px;
+    }
+  
+    .nav-button {
+      font-size: 1.5em;
+      margin: 0 10px;
+    }
+  
+    .popupWindow {
+      width: 100%;
+      flex-direction: column;
+      padding: 15px;
+    }
+  
+    .popupWindow img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+  
+    .popupWindow-text {
+      text-align: center;
+    }
+  
+    .close-button {
+      top: 15px;
+      right: 15px;
+    }
+    .suggestions-list {
+        position: absolute;
+        top: 75px;
+        width: 100%; 
+        max-width: 600px;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        max-height: 200px;
+        overflow-y: auto;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        margin-left: 0; 
+        display: none; 
+      }
+      
+      .suggestions-list.active {
+        display: block; 
+      }
+      
+      .suggestion-item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        cursor: pointer;
+        border-bottom: 1px solid #ddd;
+      }
+      
+      .suggestion-item img {
+        width: 40px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-right: 10px;
+      }
+      
+      .suggestion-title {
+        font-size: 1em;
+        font-weight: bold;
+        color: #333;
+      }
+      
+      .suggestion-author {
+        font-size: 0.9em;
+        color: #555;
+      }
+     
+.popupWindow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    width: 90%;
+    display: none; 
+    flex-direction: row;
+    overflow: hidden;
+  }
+  
+  .popupWindow.active {
+    display: flex; 
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #555;
+    transition: color 0.3s ease;
+  }
+  
+  .close-button:hover {
+    color: #000;
+  }
+  .suggestions-list {
+    position: absolute;
+    top: 75px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 600px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    display: none; 
+  }
+  
+  .suggestions-list.active {
+    display: block; 
+  }
+  
+  .suggestion-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .suggestion-item img {
+    width: 40px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+  
+  .suggestion-title {
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .suggestion-author {
+    font-size: 0.9em;
+    color: #555;
+  }
+    
+  }
+  
+  @media (max-width: 480px) {
+    .search-box select {
+      width: 30%;
+    }
+  
+    .search-box input[type="text"] {
+      font-size: 0.9em;
+    }
+  
+    .hero-title {
+      font-size: 2em;
+    }
+  
+    .hero-description {
+      font-size: 0.9em;
+    }
+  
+    .hero-btn {
+      font-size: 0.8em;
+      padding: 8px 18px;
+    }
+  
+    .book {
+      min-width: 120px;
+    }
+  
+    .popupWindow img {
+      width: 100%;
+      height: auto;
+    }
+  
+    .popupWindow-text {
+      font-size: 0.9em;
+    }
+    .suggestions-list {
+        position: absolute;
+        top: 75px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-width: 600px;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        max-height: 200px;
+        overflow-y: auto;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        display: none; 
+      }
+      
+      .suggestions-list.active {
+        display: block; 
+      }
+      
+      .suggestion-item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        cursor: pointer;
+        border-bottom: 1px solid #ddd;
+      }
+      
+      .suggestion-item img {
+        width: 40px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-right: 10px;
+      }
+      
+      .suggestion-title {
+        font-size: 1em;
+        font-weight: bold;
+        color: #333;
+      }
+      
+      .suggestion-author {
+        font-size: 0.9em;
+        color: #555;
+      }
+      
+.popupWindow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    width: 90%;
+    display: none; 
+    flex-direction: row;
+    overflow: hidden;
+  }
+  
+  .popupWindow.active {
+    display: flex; 
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #555;
+    transition: color 0.3s ease;
+  }
+  
+  .close-button:hover {
+    color: #000;
+  }
+  
+  }
+  
