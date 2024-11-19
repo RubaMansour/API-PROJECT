@@ -93,13 +93,11 @@ scrollRightButton.classList.add('nav-button');
 scrollRightButton.textContent = '>';
 
 const loadingSpinner = document.createElement('div');
+
 loadingSpinner.id = 'loading-spinner';
-loadingSpinner.style.display = 'none';
-loadingSpinner.style.textAlign = 'center';
 const spinnerIcon = document.createElement('i');
 spinnerIcon.classList.add('fas', 'fa-spinner', 'fa-spin');
-spinnerIcon.style.fontSize = '2em';
-spinnerIcon.style.color = '#f39c12';
+
 loadingSpinner.appendChild(spinnerIcon);
 
 navigationButtons.appendChild(scrollLeftButton);
@@ -111,7 +109,7 @@ document.body.appendChild(container);
 
 
 let delayTimeout;
-
+let errorPage, offlinePage;
 searchButton.addEventListener('click', () => {
     searchBooks(searchInput.value, categorySelect.value);
 });
@@ -191,12 +189,28 @@ function displaySuggestions(suggestions) {
 
 async function searchBooks(query, category) {
     if (!query.trim() && category === "") {
-        query = "book";
+        query = "book"; 
     }
+
+   
+    if (errorPage) {
+        errorPage.style.display = 'none';
+    }
+    if (offlinePage) {
+        offlinePage.style.display = 'none';
+    }
+
+   
     scrollLeftButton.style.display = 'none';
     scrollRightButton.style.display = 'none';
     booksContainer.innerHTML = '';
     loadingSpinner.style.display = "block";
+
+    if (!navigator.onLine) {
+        showOfflinePage();
+        return;
+    }
+
     let searchQuery = query.trim();
     let apiUrl = `https://openlibrary.org/search.json?q=${encodeURIComponent(searchQuery)}&limit=10`;
 
@@ -214,26 +228,55 @@ async function searchBooks(query, category) {
         }
     } catch (error) {
         console.error('Error fetching data:', error);
-        displayBooks([]);
+        displayBooks([]); 
     }
 }
 
+function showOfflinePage() {
+    if (!offlinePage) {
+        offlinePage = document.createElement('div');
+        offlinePage.style.textAlign = 'center';
+        offlinePage.style.padding = '100px 20px';
+        offlinePage.innerHTML = `
+            <h1 style="color: #333; font-size: 2.5em;">No Internet Connection</h1>
+            <p style="color: #555; font-size: 1.2em;">Please check your internet connection and try again.</p>
+            <button onclick="location.reload()" 
+                style="padding: 10px 20px; background-color: #f39c12; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 1em; margin-top: 20px;">
+                Retry
+            </button>
+        `;
+        document.body.appendChild(offlinePage);
+    }
+   
+    offlinePage.style.display = 'block';
+}
+
+function hideOfflinePage() {
+    if (offlinePage) {
+        offlinePage.style.display = 'none';
+    }
+}
 async function displayBooks(books) {
     booksContainer.innerHTML = '';
     loadingSpinner.style.display = "none"; 
     if (!books || books.length === 0) {
-        const errorPage = document.createElement('div');
-        errorPage.style.textAlign = 'center';
-        errorPage.style.padding = '100px 20px';
-        errorPage.innerHTML = `
-            <h1 style="color: #333; font-size: 2.5em;">No results found</h1>
-            <p style="color: #555; font-size: 1.2em;">Unfortunately, we couldn't find any books matching your search.</p>
-            <button onclick="location.reload()" 
-                style="padding: 10px 20px; background-color: #f39c12; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 1em; margin-top: 20px;">
-                Try Again
-            </button>
-        `;
-        document.body.appendChild(errorPage);
+       
+        if (!errorPage) {
+            errorPage = document.createElement('div');
+            errorPage.style.textAlign = 'center';
+            errorPage.style.padding = '100px 20px';
+            errorPage.innerHTML = `
+                <h1 style="color: #333; font-size: 2.5em;">No results found</h1>
+                <p style="color: #555; font-size: 1.2em;">Unfortunately, we couldn't find any books matching your search.</p>
+                <button onclick="location.reload()" 
+                    style="padding: 10px 20px; background-color: #f39c12; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 1em; margin-top: 20px;">
+                    Try Again
+                </button>
+            `;
+            document.body.appendChild(errorPage);
+        }
+      
+        errorPage.style.display = 'block';
         return;
     }
 
@@ -276,7 +319,9 @@ async function displayBooks(books) {
 
         booksContainer.appendChild(bookElement);
     });
-    document.getElementById('loading-spinner').style.display = "none";
+
+  
+    loadingSpinner.style.display = "none";
     updateNavigationButtons();
     if (books.length > 1) {
         scrollLeftButton.style.display = 'inline';
@@ -300,7 +345,6 @@ function updateNavigationButtons() {
         scrollRightButton.classList.remove('disabled');
     }
 }
-
 scrollLeftButton.addEventListener('click', () => {
     booksContainer.scrollBy({ left: -300, behavior: 'smooth' });
     updateNavigationButtons();
@@ -312,6 +356,12 @@ scrollRightButton.addEventListener('click', () => {
 });
 
 booksContainer.addEventListener('scroll', updateNavigationButtons);
+window.addEventListener('online', hideOfflinePage);
+window.addEventListener('offline', showOfflinePage);
+
+if (!navigator.onLine) {
+    showOfflinePage();
+}
 
 window.onload = function () {
     searchBooks('book', '');

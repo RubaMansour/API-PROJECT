@@ -263,6 +263,7 @@ h1 {
 .book:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
 }
 
 .book img {
@@ -355,6 +356,16 @@ color: #555;
 line-height: 1.6;
 }
 
+#loading-spinner {
+    display: none;
+    text-align: center; 
+  }
+ 
+  #loading-spinner i {
+    font-size: 2em; 
+    color: #f39c12;
+  }
+  
 .close-button {
 position: absolute;
 top: 10px;
