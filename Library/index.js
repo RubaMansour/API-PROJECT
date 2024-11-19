@@ -18,7 +18,7 @@ searchBox.classList.add('search-box');
 
 const categorySelect = document.createElement('select');
 categorySelect.id = 'category-select';
-categorySelect.innerHTML = `
+categorySelect.innerHTML = String.raw`
   <option value="">All Categories</option>
   <option value="fiction">Fiction</option>
   <option value="science">Science</option>
@@ -237,7 +237,7 @@ function showOfflinePage() {
         offlinePage = document.createElement('div');
         offlinePage.style.textAlign = 'center';
         offlinePage.style.padding = '100px 20px';
-        offlinePage.innerHTML = `
+        offlinePage.innerHTML = String.raw`
             <h1 style="color: #333; font-size: 2.5em;">No Internet Connection</h1>
             <p style="color: #555; font-size: 1.2em;">Please check your internet connection and try again.</p>
             <button onclick="location.reload()" 
@@ -265,7 +265,7 @@ async function displayBooks(books) {
             errorPage = document.createElement('div');
             errorPage.style.textAlign = 'center';
             errorPage.style.padding = '100px 20px';
-            errorPage.innerHTML = `
+            errorPage.innerHTML =String.raw`
                 <h1 style="color: #333; font-size: 2.5em;">No results found</h1>
                 <p style="color: #555; font-size: 1.2em;">Unfortunately, we couldn't find any books matching your search.</p>
                 <button onclick="location.reload()" 
@@ -300,7 +300,7 @@ async function displayBooks(books) {
             const bookDetails = await response.json();
             const popupWindow = document.createElement('div');
             popupWindow.className = 'popupWindow';
-            popupWindow.innerHTML = `
+            popupWindow.innerHTML = String.raw`
                 <img src="${coverUrl}" alt="${bookDetails.title}">
                 <div class="popupWindow-content">
                     <span class="close-button">&times;</span>
