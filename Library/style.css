@@ -369,3 +369,455 @@ transition: color 0.3s ease;
 color: #000;
 }
 
+@media (min-width: 1024px) {
+    .container {
+      max-width: 1200px;
+      padding: 20px;
+    }
+  
+    .hero-title {
+      font-size: 3em;
+    }
+  
+    .search-box {
+      width: 80%;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .container {
+      width: 90%;
+      padding: 15px;
+    }
+  
+    .hero-title {
+      font-size: 2em;
+    }
+  
+    .search-box {
+      width: 90%;
+    }
+  
+    .book img {
+      height: 200px;
+    }
+    .suggestions-list {
+        position: absolute;
+        top: 75px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-width: 600px;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        max-height: 200px;
+        overflow-y: auto;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        display: none;
+      }
+      
+      .suggestions-list.active {
+        display: block; 
+      }
+      
+      .suggestion-item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        cursor: pointer;
+        border-bottom: 1px solid #ddd;
+      }
+      
+      .suggestion-item img {
+        width: 40px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-right: 10px;
+      }
+      
+      .suggestion-title {
+        font-size: 1em;
+        font-weight: bold;
+        color: #333;
+      }
+      
+      .suggestion-author {
+        font-size: 0.9em;
+        color: #555;
+      }
+      
+  }
+  @media (max-width: 768px) {
+    body {
+      padding-top: 80px; 
+    }
+  
+    header {
+      padding: 15px 20px;
+    }
+  
+    .logo img {
+      width: 60px;
+      height: 60px;
+    }
+  
+    .search-container {
+      width: 100%;
+      padding: 0 10px;
+    }
+  
+    .search-box {
+      width: 100%;
+      margin: 10px 0;
+    }
+  
+    .search-box select {
+      width: 40%;
+      padding: 10px;
+      font-size: 0.9em;
+    }
+  
+    .search-box input[type="text"] {
+      flex: 1;
+      padding: 12px;
+      font-size: 1em;
+    }
+  
+    .search-box button {
+      padding: 12px;
+      font-size: 1em;
+    }
+  
+    .header-icons {
+      margin-right: 20px;
+      gap: 10px;
+    }
+  
+    .hero-section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+  
+    .hero-title {
+      font-size: 2.5em;
+    }
+  
+    .hero-description {
+      font-size: 1em;
+      max-width: 100%;
+    }
+  
+    .hero-btn {
+      font-size: 0.9em;
+      padding: 10px 20px;
+    }
+  
+    .container {
+      width: 100%;
+      margin-top: 100px;
+    }
+  
+    #books-container {
+      display: block;
+      padding-bottom: 20px;
+    }
+  
+    .book {
+      min-width: 150px;
+      margin: 10px auto;
+      padding: 10px;
+      width: 100%;
+    }
+  
+    .book img {
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+  
+    .book h3 {
+      font-size: 1em;
+    }
+  
+    .navigation-buttons {
+      margin-top: 20px;
+    }
+  
+    .nav-button {
+      font-size: 1.5em;
+      margin: 0 10px;
+    }
+  
+    .popupWindow {
+      width: 100%;
+      flex-direction: column;
+      padding: 15px;
+    }
+  
+    .popupWindow img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+  
+    .popupWindow-text {
+      text-align: center;
+    }
+  
+    .close-button {
+      top: 15px;
+      right: 15px;
+    }
+    .suggestions-list {
+        position: absolute;
+        top: 75px;
+        width: 100%; 
+        max-width: 600px;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        max-height: 200px;
+        overflow-y: auto;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        margin-left: 0; 
+        display: none; 
+      }
+      
+      .suggestions-list.active {
+        display: block; 
+      }
+      
+      .suggestion-item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        cursor: pointer;
+        border-bottom: 1px solid #ddd;
+      }
+      
+      .suggestion-item img {
+        width: 40px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-right: 10px;
+      }
+      
+      .suggestion-title {
+        font-size: 1em;
+        font-weight: bold;
+        color: #333;
+      }
+      
+      .suggestion-author {
+        font-size: 0.9em;
+        color: #555;
+      }
+     
+.popupWindow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    width: 90%;
+    display: none; 
+    flex-direction: row;
+    overflow: hidden;
+  }
+  
+  .popupWindow.active {
+    display: flex; 
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #555;
+    transition: color 0.3s ease;
+  }
+  
+  .close-button:hover {
+    color: #000;
+  }
+  .suggestions-list {
+    position: absolute;
+    top: 75px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 600px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    display: none; 
+  }
+  
+  .suggestions-list.active {
+    display: block; 
+  }
+  
+  .suggestion-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .suggestion-item img {
+    width: 40px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+  
+  .suggestion-title {
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .suggestion-author {
+    font-size: 0.9em;
+    color: #555;
+  }
+    
+  }
+  
+  @media (max-width: 480px) {
+    .search-box select {
+      width: 30%;
+    }
+  
+    .search-box input[type="text"] {
+      font-size: 0.9em;
+    }
+  
+    .hero-title {
+      font-size: 2em;
+    }
+  
+    .hero-description {
+      font-size: 0.9em;
+    }
+  
+    .hero-btn {
+      font-size: 0.8em;
+      padding: 8px 18px;
+    }
+  
+    .book {
+      min-width: 120px;
+    }
+  
+    .popupWindow img {
+      width: 100%;
+      height: auto;
+    }
+  
+    .popupWindow-text {
+      font-size: 0.9em;
+    }
+    .suggestions-list {
+        position: absolute;
+        top: 75px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-width: 600px;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        max-height: 200px;
+        overflow-y: auto;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        display: none; 
+      }
+      
+      .suggestions-list.active {
+        display: block; 
+      }
+      
+      .suggestion-item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        cursor: pointer;
+        border-bottom: 1px solid #ddd;
+      }
+      
+      .suggestion-item img {
+        width: 40px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-right: 10px;
+      }
+      
+      .suggestion-title {
+        font-size: 1em;
+        font-weight: bold;
+        color: #333;
+      }
+      
+      .suggestion-author {
+        font-size: 0.9em;
+        color: #555;
+      }
+      
+.popupWindow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    width: 90%;
+    display: none; 
+    flex-direction: row;
+    overflow: hidden;
+  }
+  
+  .popupWindow.active {
+    display: flex; 
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #555;
+    transition: color 0.3s ease;
+  }
+  
+  .close-button:hover {
+    color: #000;
+  }
+  
+  }
+  
