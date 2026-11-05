@@ -17,11 +17,11 @@ This is a simple and interactive book search application that allows users to se
 
 # Project Structure
 
-├── index.html             # Main HTML file
-├── style.css              # Stylesheet for the layout
-├── script.js              # JavaScript for functionality and API interactions
-├── logo2.png              # Logo image
-└── README.md              # This file
+├── index.html             
+├── style.css              
+├── script.js              
+├── logo2.png              
+└── README.md              
 
 # How It Works
 1. Search Functionality
